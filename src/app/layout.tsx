@@ -1,17 +1,26 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+// import localFont from "next/font/local";
 import "./globals.css";
+import { Roboto } from 'next/font/google'
+import { getCssText } from "@/styles";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const roboto = Roboto({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+})
+
+// const roboto = localFont({
+//   src: "./fonts/Roboto-Regular.ttf",
+//   variable: "--font-roboto",
+//   weight: "400",
+// });
+
+// const robotoBold = localFont({
+//   src: "./fonts/Roboto-Bold.ttf",
+//   variable: "--font-roboto-bold",
+//   weight: "700",
+// });
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,7 +34,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+       <head>
+        <style
+          id="stitches"
+          dangerouslySetInnerHTML={{ __html: getCssText() }} // Injeta o CSS do Stitches
+        />
+      </head>
+      <body className={roboto.className}>
+      {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
         {children}
       </body>
     </html>
