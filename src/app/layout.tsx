@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 // import localFont from "next/font/local";
-import "./globals.css";
+
 import { Roboto } from 'next/font/google'
 import { getCssText } from "@/styles";
+import { globalStyles } from "@/styles/global";
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -32,6 +33,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  globalStyles();
+  
   return (
     <html lang="en">
        <head>
