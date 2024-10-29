@@ -1,56 +1,28 @@
-'use client'
-import { HomeContainer, Product } from "@/styles/pages/home";
-
-import Image from 'next/image'
-
-import { useKeenSlider } from "keen-slider/react";
-
-import camiseta1 from '../assets/shirts/1.png'
-import camiseta2 from '../assets/shirts/2.png'
-import camiseta3 from '../assets/shirts/3.png'
 
 import 'keen-slider/keen-slider.min.css'
+import { stripe } from "@/lib/stripe";
+import Stripe from "stripe";
+import HomeSlider from "./components/HomeSlider";
 
-export default function Home() {
-  const [sliderRef] = useKeenSlider({
-    slides: {
-      perView: 2.5,
-      spacing: 48
-    }
-  })
+
+export default async function Home() {
+
+  const productsList = await stripe.products.list({
+        expand: ['data.default_price']
+      })
+
+  const products =  productsList.data.map(product=>{
+        const price = product.default_price as Stripe.Price
+        return {
+          id: product.id,
+          name: product.name,
+          imageUrl: product.images[0],
+          price: price?.unit_amount ? price.unit_amount / 100 : null
+        }
+      })
 
   return (
-    <HomeContainer ref={sliderRef} className="keen-slider">
-      <Product className="keen-slider__slide">
-        <Image src={camiseta1} width={520} height={480} alt=""/>
-        <footer>
-          <strong>Camiseta 1</strong>
-          <span>R$ 79,90</span>
-        </footer>
-      </Product>
-      <Product className="keen-slider__slide">
-        <Image src={camiseta2} width={520} height={480} alt=""/>
-        <footer>
-          <strong>Camiseta 2</strong>
-          <span>R$ 69,90</span>
-        </footer>
-      </Product>
-      <Product className="keen-slider__slide">
-        <Image src={camiseta3} width={520} height={480} alt=""/>
-        <footer>
-          <strong>Camiseta 3</strong>
-          <span>R$ 89,90</span>
-        </footer>
-      </Product>
-      <Product className="keen-slider__slide">
-        <Image src={camiseta3} width={520} height={480} alt=""/>
-        <footer>
-          <strong>Camiseta 3</strong>
-          <span>R$ 89,90</span>
-        </footer>
-      </Product>
-      
-    
-    </HomeContainer>
+    <HomeSlider products={products}/>
   );
 }
+
