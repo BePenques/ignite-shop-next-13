@@ -1,21 +1,41 @@
 import { ImageContainer, ProductContainer, ProductDetails } from "@/styles/pages/product";
+import { stripe } from "@/lib/stripe";
+import Stripe from "stripe";
+
+import Image from 'next/image'
 
 interface Props {
     params: {id: string}
 }
 
-export default function Product({params}: Props) {
+export default async function Product({params}: Props) {
 
+  const product  = await stripe.products.retrieve(params.id,{
+    expand: ["default_price"],
+  });
+
+  const price = product.default_price as Stripe.Price;
+  
+  const formattedProduct =  {
+    id: product.id,
+    name: product.name,
+    imageUrl: product.images[0],
+    price: price?.unit_amount ? new Intl.NumberFormat('pt-BR',{
+      style: 'currency',
+      currency: 'BRL',
+    }).format(price.unit_amount/100) : null,
+    description: product.description
+  };
 
   return (
     <ProductContainer>
       <ImageContainer>
-
+        <Image src={formattedProduct?.imageUrl} width={520} height={480} alt=""/>
       </ImageContainer>
       <ProductDetails>
-        <h1>Camiseta X</h1>
-        <span>R$ 79,90</span>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis libero cumque dignissimos vero eius laudantium repudiandae nam doloremque ipsam maiores labore minus, iure animi ex ipsum earum, ducimus voluptatum saepe.</p>
+        <h1>{formattedProduct?.name}</h1>
+        <span>{formattedProduct?.price}</span>
+        <p>{formattedProduct?.description}</p>
         <button>Comprar agora</button>
       </ProductDetails>
     </ProductContainer>
