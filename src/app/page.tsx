@@ -4,6 +4,8 @@ import { stripe } from "@/lib/stripe";
 import Stripe from "stripe";
 import HomeSlider from "./components/HomeSlider";
 
+export const revalidate = 60 * 60 * 1; //1 hour
+
 export default async function Home() {
 
   const productsList = await stripe.products.list({

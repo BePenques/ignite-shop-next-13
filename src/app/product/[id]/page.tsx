@@ -8,6 +8,17 @@ interface Props {
     params: {id: string}
 }
 
+export async function generateStaticParams() {
+  const products = await stripe.products.list(); 
+  //sugestão: se tem muitos produtos, buscar apenas os produtos mais acessados/vendidos
+
+  return products.data.map((product) => ({
+    id: product.id,
+  }));
+}
+
+export const revalidate = 60 * 60 * 1; //1 hour
+
 export default async function Product({params}: Props) {
 
   const product  = await stripe.products.retrieve(params.id,{
