@@ -22,6 +22,7 @@ export default async function Home() {
         style: 'currency',
         currency: 'BRL',
       }).format(price.unit_amount/100) : null,
+     
     };
   });
 

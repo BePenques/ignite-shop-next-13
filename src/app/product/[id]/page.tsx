@@ -1,8 +1,10 @@
+
 import { ImageContainer, ProductContainer, ProductDetails } from "@/styles/pages/product";
 import { stripe } from "@/lib/stripe";
 import Stripe from "stripe";
 
 import Image from 'next/image'
+import SendButton from "@/app/components/SendButton";
 
 interface Props {
     params: {id: string}
@@ -21,6 +23,7 @@ export const revalidate = 60 * 60 * 1; //1 hour
 
 export default async function Product({params}: Props) {
 
+
   const product  = await stripe.products.retrieve(params.id,{
     expand: ["default_price"],
   });
@@ -35,8 +38,11 @@ export default async function Product({params}: Props) {
       style: 'currency',
       currency: 'BRL',
     }).format(price.unit_amount/100) : null,
-    description: product.description
+    description: product.description,
+    defaultPriceId: price.id
   };
+
+
 
   return (
     <ProductContainer>
@@ -47,7 +53,8 @@ export default async function Product({params}: Props) {
         <h1>{formattedProduct?.name}</h1>
         <span>{formattedProduct?.price}</span>
         <p>{formattedProduct?.description}</p>
-        <button>Comprar agora</button>
+        <SendButton defaultPriceId={formattedProduct.defaultPriceId}/>
+        {/* <button onClick={handleBuyProduct}>Comprar agora</button> */}
       </ProductDetails>
     </ProductContainer>
   );
