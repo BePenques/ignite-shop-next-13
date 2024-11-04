@@ -19,7 +19,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
             { status: 400, message: 'Price not found' },
         );
     }
-    const successUrl = `${process.env.NEXT_URL}/success`;
+    const successUrl = `${process.env.NEXT_URL}/success?session_id={CHECKOUT_SESSION_ID}`;
     const cancelUrl = `${process.env.NEXT_URL}/`;
 
     const session = await stripe.checkout.sessions.create({
