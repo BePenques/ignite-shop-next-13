@@ -1,11 +1,24 @@
 import { stripe } from '@/lib/stripe';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
+interface RequestBody {
+    priceId: string;
+  }
 
-export async function GET() {
-    
-    const priceId = 'price_1QEyR8BFuEymB7iSC2T9AKUV'//ID de um dos preços do produto
+export async function POST(request: NextRequest): Promise<NextResponse> {
 
+    const { priceId }: RequestBody = await request.json(); //ID de um dos preços do produto
+
+    if(request.method !== 'POST'){
+        return NextResponse.json(
+            { status: 405, message: 'Method not allowed' },
+        );
+    }
+    if(!priceId){
+        return NextResponse.json(
+            { status: 400, message: 'Price not found' },
+        );
+    }
     const successUrl = `${process.env.NEXT_URL}/success`;
     const cancelUrl = `${process.env.NEXT_URL}/`;
 
