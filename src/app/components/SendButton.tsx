@@ -6,7 +6,7 @@ import { useState } from "react"
 // import { useRouter } from 'next/navigation';
 
 interface SendButtonProps {
-    defaultPriceId: string
+    defaultPriceId?: string 
 }
 
 export default function SendButton({defaultPriceId}:SendButtonProps) {

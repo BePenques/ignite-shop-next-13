@@ -3,16 +3,29 @@ import 'keen-slider/keen-slider.min.css'
 import { stripe } from "@/lib/stripe";
 import Stripe from "stripe";
 import HomeSlider from "./components/HomeSlider";
+// import Head from 'next/head';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Ignite Shop",
+};
 
 export const revalidate = 60 * 60 * 1; //1 hour
 
-export default async function Home() {
+type ProductData = {
+  id: string,
+  name: string,
+  imageUrl: string,
+  price: string | null,
+}[]
+
+async function getProductsData(): Promise<ProductData> {
 
   const productsList = await stripe.products.list({
     expand: ["data.default_price"],
   });
 
-  const products = productsList.data.map((product) => {
+  return productsList.data.map((product) => {
     const price = product.default_price as Stripe.Price;
     return {
       id: product.id,
@@ -25,11 +38,20 @@ export default async function Home() {
      
     };
   });
+}
+
+
+
+export default async function Home() {
+
+  
+  const products = await getProductsData();
 
   return (
-    <HomeSlider products={products}/>
+      <HomeSlider products={products}/>
   );
 }
+
 
 
 

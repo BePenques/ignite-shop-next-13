@@ -2,12 +2,22 @@
 import { ImageContainer, ProductContainer, ProductDetails } from "@/styles/pages/product";
 import { stripe } from "@/lib/stripe";
 import Stripe from "stripe";
-
+import { redirect } from 'next/navigation';
 import Image from 'next/image'
 import SendButton from "@/app/components/SendButton";
+import Head from 'next/head';
+import { Metadata } from "next";
 
 interface Props {
     params: {id: string}
+}
+interface ProductData {
+  id: string,
+  name: string,
+  imageUrl: string,
+  price: string | null,
+  description: string | null,
+  defaultPriceId: string
 }
 
 export async function generateStaticParams() {
@@ -21,16 +31,16 @@ export async function generateStaticParams() {
 
 export const revalidate = 60 * 60 * 1; //1 hour
 
-export default async function Product({params}: Props) {
+async function getProductData(productId: string): Promise<ProductData> {
 
-
-  const product  = await stripe.products.retrieve(params.id,{
+  const product  = await stripe.products.retrieve(productId,{
     expand: ["default_price"],
   });
 
   const price = product.default_price as Stripe.Price;
-  
-  const formattedProduct =  {
+
+
+  return {
     id: product.id,
     name: product.name,
     imageUrl: product.images[0],
@@ -41,21 +51,38 @@ export default async function Product({params}: Props) {
     description: product.description,
     defaultPriceId: price.id
   };
+}
 
+export const metadata: Metadata = {
+  title: "Ignite Shop",
+};
+
+export default async function Product({params}: Props) {
+  
+  if(!params.id){
+    redirect('/');
+  }
+
+  const product = await getProductData(params.id);
 
 
   return (
-    <ProductContainer>
-      <ImageContainer>
-        <Image src={formattedProduct?.imageUrl} width={520} height={480} alt=""/>
-      </ImageContainer>
-      <ProductDetails>
-        <h1>{formattedProduct?.name}</h1>
-        <span>{formattedProduct?.price}</span>
-        <p>{formattedProduct?.description}</p>
-        <SendButton defaultPriceId={formattedProduct.defaultPriceId}/>
-        {/* <button onClick={handleBuyProduct}>Comprar agora</button> */}
-      </ProductDetails>
-    </ProductContainer>
+    <>
+      <Head>
+        <title>{product?.name} | Ignite Shop</title>
+      </Head>
+      <ProductContainer>
+        <ImageContainer>
+          <Image src={product?.imageUrl} width={520} height={480} alt=""/>
+        </ImageContainer>
+        <ProductDetails>
+          <h1>{product?.name}</h1>
+          <span>{product?.price}</span>
+          <p>{product?.description}</p>
+          <SendButton defaultPriceId={product?.defaultPriceId}/>
+          {/* <button onClick={handleBuyProduct}>Comprar agora</button> */}
+        </ProductDetails>
+      </ProductContainer>
+    </>
   );
 }
