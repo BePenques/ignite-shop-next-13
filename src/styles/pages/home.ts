@@ -38,14 +38,33 @@ export const Product = styled('div',{
         borderRadius: 6,
 
         display: 'flex',
-        alignItems: 'center',
+        flexDirection: 'row',
         justifyContent: 'space-between',
+        // alignItems: 'center',
+        // justifyContent: 'space-between',
+        // gap: 4,
+
 
         backgroundColor: 'rgba(0, 0, 0, 0.6)',
 
         transform: 'translateY(110%)',
         opacity: 0,
         transition: 'all 0.2s ease-in-out',
+
+        div: {
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 4
+        },
+
+        button: {
+            width: 48,
+            height: 48,
+            backgroundColor: '$green500',
+            border: 0,
+            cursor: 'pointer',
+            borderRadius: 6
+        },
 
         strong:{
             fontSize: '$lg',

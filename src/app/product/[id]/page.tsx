@@ -4,9 +4,15 @@ import { stripe } from "@/lib/stripe";
 import Stripe from "stripe";
 import { redirect } from 'next/navigation';
 import Image from 'next/image'
-import SendButton from "@/app/components/SendButton";
-import Head from 'next/head';
+// import SendButton from "@/app/components/SendButton";
+// import Head from 'next/head';
 import { Metadata } from "next";
+import * as Dialog from '@radix-ui/react-dialog';
+// import { Handbag } from "@phosphor-icons/react";
+import { Handbag } from "@phosphor-icons/react/dist/ssr";
+import SideDrawer from "@/app/components/SideDrawer";
+
+
 
 interface Props {
     params: {id: string}
@@ -63,14 +69,13 @@ export default async function Product({params}: Props) {
     redirect('/');
   }
 
+
   const product = await getProductData(params.id);
 
 
   return (
-    <>
-      <Head>
-        <title>{product?.name} | Ignite Shop</title>
-      </Head>
+    
+     <Dialog.Root>
       <ProductContainer>
         <ImageContainer>
           <Image src={product?.imageUrl} width={520} height={480} alt=""/>
@@ -79,10 +84,18 @@ export default async function Product({params}: Props) {
           <h1>{product?.name}</h1>
           <span>{product?.price}</span>
           <p>{product?.description}</p>
-          <SendButton defaultPriceId={product?.defaultPriceId}/>
-          {/* <button onClick={handleBuyProduct}>Comprar agora</button> */}
+          {/* <SendButton defaultPriceId={product?.defaultPriceId}/> */}
+            <Dialog.Trigger asChild>
+                <button>
+                    <Handbag size={24}  color="white" />
+                </button>
+            </Dialog.Trigger>
+            <SideDrawer />
+    
+        
         </ProductDetails>
       </ProductContainer>
-    </>
+      </Dialog.Root>
+    
   );
 }

@@ -1,4 +1,7 @@
-import { styled } from "..";
+'use client'
+import { styled, keyframes} from "..";
+import * as Dialog from '@radix-ui/react-dialog';
+// import { keyframes } from '@stitches/react';
 
 export const ProductContainer = styled('main',{
     display: 'grid',
@@ -66,4 +69,53 @@ export const ProductDetails = styled('div',{
         }
     }
 })
+
+// Definindo animações para o modal deslizante
+export const slideIn = keyframes({
+'0%': { transform: 'translateX(100%)' },
+'100%': { transform: 'translateX(0)' },
+});
+
+export const slideOut = keyframes({
+'0%': { transform: 'translateX(0)' },
+'100%': { transform: 'translateX(100%)' },
+});
+  
+  // Overlay (fundo escurecido do modal)
+export const StyledOverlay = styled(Dialog.Overlay, {
+    position: 'fixed',
+    inset: 0,
+    backgroundColor: '$overlay',
+});
+
+// Conteúdo do modal lateral
+export const StyledContent = styled(Dialog.Content, {
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    width: '$modalWidth',
+    backgroundColor: '$white',
+    padding: '$1',
+    boxShadow: '-2px 0 10px $shadow',
+    display: 'flex',
+    flexDirection: 'column',
+
+    // Animações ao abrir e fechar o modal
+    '&[data-state="open"]': {
+    animation: `${slideIn} 0.3s ease-in-out`,
+    },
+    '&[data-state="closed"]': {
+    animation: `${slideOut} 0.3s ease-in-out`,
+    },
+});
+
+// Botão de fechar o modal
+export const CloseButton = styled('button', {
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    alignSelf: 'flex-end',
+    marginTop: '10px',
+});
 

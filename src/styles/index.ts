@@ -8,7 +8,7 @@ export const {
     getCssText,
     theme,
     createTheme,
-    css
+    css,
 } = createStitches({
     theme:{
         colors:{

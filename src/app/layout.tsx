@@ -1,5 +1,6 @@
 // import type { Metadata } from "next";
 // import localFont from "next/font/local";
+import React from 'react';
 
 import { Roboto } from 'next/font/google'
 import { getCssText } from "@/styles";
@@ -8,6 +9,8 @@ import logoImg from '../assets/logo.svg'
 import { Container, Header } from "@/styles/pages/app";
 
 import Image from 'next/image'
+import CartButton from './components/CartButton';
+
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -51,6 +54,7 @@ export default function RootLayout({
        <Container>
         <Header>
           <Image src={logoImg} alt="" />
+          <CartButton/>
         </Header>
        </Container>
       {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
