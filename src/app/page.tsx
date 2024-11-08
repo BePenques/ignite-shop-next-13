@@ -42,8 +42,6 @@ async function getProductsData(): Promise<ProductData> {
   });
 }
 
-
-
 export default async function Home() {
 
   

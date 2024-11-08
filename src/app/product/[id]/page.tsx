@@ -1,10 +1,10 @@
 
-import { ImageContainer, ProductContainer, ProductDetails } from "@/styles/pages/product";
+import { StyledImageContainer, StyledProductContainer, StyledProductDetails } from "@/styles/pages/product";
 import { stripe } from "@/lib/stripe";
 import Stripe from "stripe";
 import { redirect } from 'next/navigation';
 import Image from 'next/image'
-import SendButton from "@/app/components/SendButton";
+import AddProductButton from "@/app/components/AddProductButton";
 import { Metadata } from "next";
 import { CartItem } from "@/app/context/cart";
 
@@ -60,16 +60,16 @@ export default async function Product({params}: Props) {
 
 
   return ( 
-      <ProductContainer>
-        <ImageContainer>
+      <StyledProductContainer>
+        <StyledImageContainer>
           <Image src={product?.imageUrl} width={520} height={480} alt=""/>
-        </ImageContainer>
-        <ProductDetails>
+        </StyledImageContainer>
+        <StyledProductDetails>
           <h1>{product?.name}</h1>
           <span>{product?.price}</span>
           <p>{product?.description}</p>
-          <SendButton product={product}/>
-        </ProductDetails>
-      </ProductContainer>   
+          <AddProductButton product={product}/>
+        </StyledProductDetails>
+      </StyledProductContainer>   
   );
 }

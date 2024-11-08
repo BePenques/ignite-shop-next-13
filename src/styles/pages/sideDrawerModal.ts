@@ -1,6 +1,6 @@
 import { styled } from "..";
 
-export const ImageContainerCart = styled('div',{
+export const StyledImageContainerCart = styled('div',{
     width: '100%',
     maxWidth: 102,
     height: 93,
@@ -18,6 +18,7 @@ export const ImageContainerCart = styled('div',{
     }
 })
 
+
 export const StyledProductCard = styled('div',{
     display: 'flex',
     width: '100%',
@@ -32,9 +33,46 @@ export const StyledProductCard = styled('div',{
             marginBottom: 2
         },
         strong:{
-            marginBottom: 8
+            marginBottom: 12
+        },
+        a: {
+            color: '$green500',
+            cursor: 'pointer',
+            '&:hover': {
+                textDecoration: 'underline'
+            }
         }
+    }
 
+})
+
+export const StyledEmptyCart = styled('div', {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: 200
+})
+
+export const StyledCartButton = styled('div',{
+    position: 'relative',
+
+    span:{
+        backgroundColor: '$green500',
+        border: '2px solid black',
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        transform: 'translate(50%, -50%)',
+        color: 'white',
+        borderRadius: '50%',
+        padding: '4px 8px',
+        fontSize: '12px',
+        fontWeight: 'bold',
+        width: '24px',
+        height: '24px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)',
     }
 
 })

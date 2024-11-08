@@ -1,17 +1,15 @@
-// import type { Metadata } from "next";
-// import localFont from "next/font/local";
 import React from 'react';
 
 import { Roboto } from 'next/font/google'
 import { getCssText } from "@/styles";
 import { globalStyles } from "@/styles/global";
 import logoImg from '../assets/logo.svg'
-import { Container, Header } from "@/styles/pages/app";
+import { StyledContainer, StyledHeader } from "@/styles/pages/app";
 
 import Image from 'next/image'
-import CartButton from './components/CartButton';
 import * as Dialog from '@radix-ui/react-dialog';
 import SideDrawer from "@/app/components/SideDrawer";
+import OpenCartButton from './components/OpenCartButton';
 
 
 
@@ -54,20 +52,20 @@ export default function RootLayout({
         />
       </head>
       <body className={roboto.className}>
-       <Container>
+       <StyledContainer>
         <Dialog.Root>
-          <Header>
+          <StyledHeader>
             <Image src={logoImg} alt="" />
               {/* <Dialog.Trigger asChild>
                 <button>
                     <Handbag size={24}  color="white" />
                 </button>
               </Dialog.Trigger> */}
-              <CartButton/>
-          </Header>
+              <OpenCartButton/>
+          </StyledHeader>
           <SideDrawer />
         </Dialog.Root>
-       </Container>
+       </StyledContainer>
       {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
         {children}
       </body>

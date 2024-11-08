@@ -2,7 +2,7 @@
 import {styled, keyframes} from '..' 
 import * as Dialog from '@radix-ui/react-dialog';
 
-export const Container = styled('div',{
+export const StyledContainer = styled('div',{
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
@@ -10,7 +10,7 @@ export const Container = styled('div',{
     minHeight: '100vh',
 })
 
-export const Header = styled('header',{
+export const StyledHeader = styled('header',{
     display: 'flex',
     justifyContent: 'space-between',
     padding: '2rem 0',
@@ -46,7 +46,11 @@ export const slideIn = keyframes({
         inset: 0,
         backgroundColor: '$overlay',
     });
-    
+    export const StyledTitle = styled(Dialog.Title, {
+        fontSize: '$lg',
+        fontWeight: 'bold',
+        marginBottom: '2rem'
+    })
  
     export const StyledContent = styled(Dialog.Content, {
         position: 'fixed',
@@ -59,12 +63,6 @@ export const slideIn = keyframes({
         boxShadow: '-2px 0 10px $shadow',
         display: 'flex',
         flexDirection: 'column',
-
-        h2:{
-            fontSize: '$lg',
-            fontWeight: 'bold',
-            marginBottom: '2rem'
-        },
     
         // Animações ao abrir e fechar o modal
         '&[data-state="open"]': {
@@ -140,5 +138,4 @@ export const slideIn = keyframes({
         border: 'none',
         cursor: 'pointer',
         alignSelf: 'flex-end',
-        // marginTop: '5px',
     });

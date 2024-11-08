@@ -1,9 +1,9 @@
 'use client'
-import { HomeContainer, Product } from "@/styles/pages/home";
+import { StyledHomeContainer, StyledProduct } from "@/styles/pages/home";
 import Image from 'next/image'
 import { useKeenSlider } from "keen-slider/react";
 import Link from 'next/link'
-// import CartButton from "./CartButton";
+import { Handbag } from "phosphor-react";
 
 interface HomeSliderProps {
   products:{
@@ -24,14 +24,14 @@ export default function HomeSlider({products}:HomeSliderProps) {
   })
 
 return (    
-      <HomeContainer ref={sliderRef} className="keen-slider">
+      <StyledHomeContainer ref={sliderRef} className="keen-slider">
       {
         products && 
         (
           products.map(product=>{
             return (
               <Link   href={`/product/${product.id}`} key={product.id} prefetch={false}>
-                  <Product        
+                  <StyledProduct        
                     className="keen-slider__slide"
                   >
                       <Image src={product.imageUrl} width={520} height={480} alt=""/>
@@ -40,14 +40,17 @@ return (
                           <strong>{product.name}</strong>
                           <span>{product.price}</span>
                         </div>
-                        {/* <CartButton/> */}
+                        {/* <CartButton product={product}/> */}
+                        <button>
+                            <Handbag size={24}  color="white" />
+                        </button>
                       </footer>
-                  </Product>
+                  </StyledProduct>
               </Link>
             )
           })
         )
       }
-      </HomeContainer>   
+      </StyledHomeContainer>   
     )
 }

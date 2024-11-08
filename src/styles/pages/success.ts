@@ -1,6 +1,6 @@
 import { styled } from '..'
 
-export const SuccessContainer = styled('main',{
+export const StyledSuccessContainer = styled('main',{
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -34,7 +34,7 @@ export const SuccessContainer = styled('main',{
     }
 })
 
-export const ImageContainer = styled('div',{
+export const StyledImageContainer = styled('div',{
     width: '100%',
     maxWidth: 130,
     height: 145,

@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 
-import axios from "axios"
-import { useState } from "react"
 import useCartStore from "../context/cart";
 import {CartItem} from '../context/cart'
 
@@ -10,9 +8,9 @@ interface SendButtonProps {
     product: CartItem; 
   }
 
-export default function SendButton({product}: SendButtonProps) {
+export default function AddProductButton({product}: SendButtonProps) {
 
-    const { items, addItem, removeItem, clearCart } = useCartStore();
+    const { addItem  } = useCartStore();
 
 
     // const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
@@ -41,6 +39,6 @@ export default function SendButton({product}: SendButtonProps) {
 
 return (    
         // <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct} >Colocar na sacola</button>
-        <button onClick={() => addItem(product)} >Colocar na sacola</button>
+        <button onClick={() => addItem(product)}>Colocar na sacola</button>
     )
 }

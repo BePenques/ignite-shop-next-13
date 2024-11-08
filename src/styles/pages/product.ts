@@ -2,7 +2,7 @@
 import { styled } from "..";
 // import { keyframes } from '@stitches/react';
 
-export const ProductContainer = styled('main',{
+export const StyledProductContainer = styled('main',{
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
     alignItems: 'stretch',
@@ -11,7 +11,7 @@ export const ProductContainer = styled('main',{
     margin: '0 auto'
 
 })
-export const ImageContainer = styled('div',{
+export const StyledImageContainer = styled('div',{
     width: '100%',
     maxWidth: 576,
     height: 656,
@@ -28,7 +28,7 @@ export const ImageContainer = styled('div',{
     }
 })
 
-export const ProductDetails = styled('div',{
+export const StyledProductDetails = styled('div',{
     display: 'flex',
     flexDirection: 'column',
 
