@@ -3,7 +3,8 @@ import 'keen-slider/keen-slider.min.css'
 import { stripe } from "@/lib/stripe";
 import Stripe from "stripe";
 import HomeSlider from "./components/HomeSlider";
-// import Head from 'next/head';
+
+
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ type ProductData = {
   imageUrl: string,
   price: string | null,
 }[]
+
 
 async function getProductsData(): Promise<ProductData> {
 

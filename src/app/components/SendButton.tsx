@@ -3,39 +3,44 @@
 
 import axios from "axios"
 import { useState } from "react"
-// import { useRouter } from 'next/navigation';
+import useCartStore from "../context/cart";
+import {CartItem} from '../context/cart'
 
 interface SendButtonProps {
-    defaultPriceId?: string 
-}
+    product: CartItem; 
+  }
 
-export default function SendButton({defaultPriceId}:SendButtonProps) {
+export default function SendButton({product}: SendButtonProps) {
 
-    const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
+    const { items, addItem, removeItem, clearCart } = useCartStore();
+
+
+    // const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
 
     async function handleBuyProduct(){
        
-        try{//recomendavel para lidar com requisiçoes para apis externas e açoes do usuario
+        // try{//recomendavel para lidar com requisiçoes para apis externas e açoes do usuario
            
-            setIsCreatingCheckoutSession(true)
+        //     setIsCreatingCheckoutSession(true)
 
-            const response = await axios.post('/api/checkout',{
-                priceId: defaultPriceId
-            })
+        //     const response = await axios.post('/api/checkout',{
+        //         priceId: defaultPriceId
+        //     })
 
-            const { checkoutUrl } = response.data;
+        //     const { checkoutUrl } = response.data;
 
-            window.location.href = checkoutUrl;
+        //     window.location.href = checkoutUrl;
 
-        }catch(err){
-            setIsCreatingCheckoutSession(false)
-            //conectar com ferramenta de observabilidade(Datadog/sentry)
-            alert('Falha ao redirecionar ao checkout')
-        }
+        // }catch(err){
+        //     setIsCreatingCheckoutSession(false)
+        //     //conectar com ferramenta de observabilidade(Datadog/sentry)
+        //     alert('Falha ao redirecionar ao checkout')
+        // }
       
     }
 
 return (    
-        <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>Comprar agora</button>
+        // <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct} >Colocar na sacola</button>
+        <button onClick={() => addItem(product)} >Colocar na sacola</button>
     )
 }

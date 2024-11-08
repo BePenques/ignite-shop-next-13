@@ -4,27 +4,14 @@ import { stripe } from "@/lib/stripe";
 import Stripe from "stripe";
 import { redirect } from 'next/navigation';
 import Image from 'next/image'
-// import SendButton from "@/app/components/SendButton";
-// import Head from 'next/head';
+import SendButton from "@/app/components/SendButton";
 import { Metadata } from "next";
-import * as Dialog from '@radix-ui/react-dialog';
-// import { Handbag } from "@phosphor-icons/react";
-import { Handbag } from "@phosphor-icons/react/dist/ssr";
-import SideDrawer from "@/app/components/SideDrawer";
-
-
+import { CartItem } from "@/app/context/cart";
 
 interface Props {
     params: {id: string}
 }
-interface ProductData {
-  id: string,
-  name: string,
-  imageUrl: string,
-  price: string | null,
-  description: string | null,
-  defaultPriceId: string
-}
+
 
 export async function generateStaticParams() {
   const products = await stripe.products.list(); 
@@ -37,7 +24,7 @@ export async function generateStaticParams() {
 
 export const revalidate = 60 * 60 * 1; //1 hour
 
-async function getProductData(productId: string): Promise<ProductData> {
+async function getProductData(productId: string): Promise<CartItem> {
 
   const product  = await stripe.products.retrieve(productId,{
     expand: ["default_price"],
@@ -69,13 +56,10 @@ export default async function Product({params}: Props) {
     redirect('/');
   }
 
-
   const product = await getProductData(params.id);
 
 
-  return (
-    
-     <Dialog.Root>
+  return ( 
       <ProductContainer>
         <ImageContainer>
           <Image src={product?.imageUrl} width={520} height={480} alt=""/>
@@ -84,18 +68,8 @@ export default async function Product({params}: Props) {
           <h1>{product?.name}</h1>
           <span>{product?.price}</span>
           <p>{product?.description}</p>
-          {/* <SendButton defaultPriceId={product?.defaultPriceId}/> */}
-            <Dialog.Trigger asChild>
-                <button>
-                    <Handbag size={24}  color="white" />
-                </button>
-            </Dialog.Trigger>
-            <SideDrawer />
-    
-        
+          <SendButton product={product}/>
         </ProductDetails>
-      </ProductContainer>
-      </Dialog.Root>
-    
+      </ProductContainer>   
   );
 }

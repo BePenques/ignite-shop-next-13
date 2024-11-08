@@ -10,6 +10,9 @@ import { Container, Header } from "@/styles/pages/app";
 
 import Image from 'next/image'
 import CartButton from './components/CartButton';
+import * as Dialog from '@radix-ui/react-dialog';
+import SideDrawer from "@/app/components/SideDrawer";
+
 
 
 const roboto = Roboto({
@@ -52,10 +55,18 @@ export default function RootLayout({
       </head>
       <body className={roboto.className}>
        <Container>
-        <Header>
-          <Image src={logoImg} alt="" />
-          <CartButton/>
-        </Header>
+        <Dialog.Root>
+          <Header>
+            <Image src={logoImg} alt="" />
+              {/* <Dialog.Trigger asChild>
+                <button>
+                    <Handbag size={24}  color="white" />
+                </button>
+              </Dialog.Trigger> */}
+              <CartButton/>
+          </Header>
+          <SideDrawer />
+        </Dialog.Root>
        </Container>
       {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
         {children}
