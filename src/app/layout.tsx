@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 
 import { Roboto } from 'next/font/google'
@@ -42,6 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   globalStyles();
+
   
   return (
     <html lang="en">
@@ -52,22 +54,17 @@ export default function RootLayout({
         />
       </head>
       <body className={roboto.className}>
-       <StyledContainer>
         <Dialog.Root>
-          <StyledHeader>
-            <Image src={logoImg} alt="" />
-              {/* <Dialog.Trigger asChild>
-                <button>
-                    <Handbag size={24}  color="white" />
-                </button>
-              </Dialog.Trigger> */}
-              <OpenCartButton/>
-          </StyledHeader>
-          <SideDrawer />
+          <StyledContainer>
+              <StyledHeader>
+                <Image src={logoImg} alt="" />
+                  <OpenCartButton/>
+              </StyledHeader>
+              <SideDrawer />       
+          </StyledContainer>
+          {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
+          {children}
         </Dialog.Root>
-       </StyledContainer>
-      {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
-        {children}
       </body>
     </html>
   );

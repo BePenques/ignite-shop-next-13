@@ -1,5 +1,6 @@
 'use client'
 import useCartStore from "../context/cart";
+import FinalizeOrderButton from "./finalizeOrderButton";
 
 export function  ModalFooter() {
 
@@ -30,7 +31,7 @@ export function  ModalFooter() {
         <p>Valor total</p>
         <span>{totalFormatted}</span>
     </div>  
-    <button>Finalizar compra</button> 
+      <FinalizeOrderButton/>
     </>
   )
 }

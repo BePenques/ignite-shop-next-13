@@ -24,7 +24,7 @@ export const StyledHeader = styled('header',{
         backgroundColor: '$gray800',
         border: 0,
         cursor: 'pointer',
-        borderRadius: 6
+        borderRadius: 6,
     }
 })
 

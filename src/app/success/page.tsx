@@ -4,7 +4,6 @@ import { stripe } from "@/lib/stripe";
 import Stripe from "stripe";
 import Image from "next/image";
 import { redirect } from 'next/navigation';
-import Head from 'next/head';
 
 
 
@@ -50,24 +49,16 @@ export default async function Success({searchParams}: SuccessPageProps){
     const sessionData = await getSessionData(sessionId);
 
     return (
-      <>
-        <Head>
-          <title>Compra efetuada | Ignite Shop</title>
-
-          <meta name="robots" content="noindex"/>
-        </Head>
-        <StyledSuccessContainer>
-            <h1>Compra efetuada!</h1>
-            <StyledImageContainer>
-                <Image src={sessionData?.product?.imageUrl} width={120} height={110} alt=''/>     
-            </StyledImageContainer>
-            <p>
-            Uhuul <strong>{sessionData?.customerName}</strong>, sua <strong>{sessionData?.product?.name} </strong> já está a caminho da sua casa. 
-            </p>
-            <Link href={"/"}>Voltar ao catálogo</Link>
-        </StyledSuccessContainer>
-      </>
-      
+      <StyledSuccessContainer>
+          <h1>Compra efetuada!</h1>
+          <StyledImageContainer>
+              <Image src={sessionData?.product?.imageUrl} width={120} height={110} alt=''/>     
+          </StyledImageContainer>
+          <p>
+          Uhuul <strong>{sessionData?.customerName}</strong>, sua <strong>{sessionData?.product?.name} </strong> já está a caminho da sua casa. 
+          </p>
+          <Link href={"/"}>Voltar ao catálogo</Link>
+      </StyledSuccessContainer>
     )
 }
 
