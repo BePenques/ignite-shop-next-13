@@ -1,5 +1,6 @@
 
-import { styled } from "..";
+'use client'
+import { styled } from "../stitches.config";
 // import { keyframes } from '@stitches/react';
 
 export const StyledProductContainer = styled('main',{
@@ -9,6 +10,7 @@ export const StyledProductContainer = styled('main',{
     gap: '4rem',
     maxWidth: 1180,
     margin: '0 auto'
+   
 
 })
 export const StyledImageContainer = styled('div',{
@@ -48,8 +50,30 @@ export const StyledProductDetails = styled('div',{
         lineHeight: 1.6,
         color: '$gray300', 
     },
-    button:{
-        marginTop: 'auto',
+    // button:{
+    //     marginTop: 'auto',
+    //     backgroundColor: '$green500',
+    //     border: 0,
+    //     color: '$white',
+    //     borderRadius: 8,
+    //     padding: '1.25rem',
+    //     cursor: 'pointer',
+    //     fontWeight: 'bold',
+    //     fontSize: '$md',
+
+    //     '&:disabled':{
+    //         opacity: 0.6,
+    //         cursor: 'not-allowed'
+    //     },
+
+    //     '&:hover':{
+    //         backgroundColor: '$green300',
+    //     }
+    // }
+})
+
+export const StyledAddProductButton = styled('button',{
+    marginTop: 'auto',
         backgroundColor: '$green500',
         border: 0,
         color: '$white',
@@ -67,7 +91,4 @@ export const StyledProductDetails = styled('div',{
         '&:hover':{
             backgroundColor: '$green300',
         }
-    }
 })
-
-

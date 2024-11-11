@@ -1,5 +1,5 @@
 
-import {styled} from '..';
+import {styled} from '../stitches.config';
 
 
 export const StyledHomeContainer = styled('main',{

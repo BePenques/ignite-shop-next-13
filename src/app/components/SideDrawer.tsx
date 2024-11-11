@@ -1,8 +1,9 @@
-import * as Dialog from '@radix-ui/react-dialog';
+// import * as Dialog from '@radix-ui/react-dialog';
 import { StyledOverlay, StyledContent, StyledProductList, StyledModalFooter, StyledTitle} from '@/styles/pages/app';
 import CloseButton from './CloseButton';
 import ProductCards from './ProductCards';
 import { ModalFooter } from './ModalFooter';
+import * as Dialog from '@radix-ui/react-dialog';
 
 
 const SideDrawer: React.FC = () => {
@@ -21,8 +22,8 @@ const SideDrawer: React.FC = () => {
             <ModalFooter/>
           </StyledModalFooter>
         </StyledContent>
-      </Dialog.Portal>
+      </Dialog.Portal>   
   );
 };
-
+    
 export default SideDrawer;

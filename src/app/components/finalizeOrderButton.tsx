@@ -11,7 +11,7 @@ import { useState } from "react";
 
 export default function FinalizeOrderButton() {
 
-    const { items  } = useCartStore();
+    const { items, clearCart  } = useCartStore();
 
     const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
 
@@ -42,7 +42,7 @@ export default function FinalizeOrderButton() {
             alert('Falha ao redirecionar ao checkout')
         }
        
-      
+        clearCart();
     }
    
 

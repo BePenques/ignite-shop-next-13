@@ -12,7 +12,6 @@ export default function OpenCartButton() {
 return (   
     <Dialog.Trigger asChild>
         <StyledCartButton>
-           
             <button>
                 <Handbag size={24}  color={items.length == 0 ? '#8D8D99': '#fff'} />
             </button>

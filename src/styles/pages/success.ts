@@ -1,16 +1,21 @@
-import { styled } from '..'
+'use client'
+import { styled } from '../stitches.config'
 
 export const StyledSuccessContainer = styled('main',{
+   
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: '0 auto',
+    alignContent: 'center',
+    // margin: '0 auto',
     height: 656,
+    width: '100%',
 
     h1:{
         fontSize: '$2xl',
-        color: '$gray100'
+        color: '$gray100',
+        marginTop: 48
     },
     p:{
         fontSize: '$xl',
@@ -34,21 +39,51 @@ export const StyledSuccessContainer = styled('main',{
     }
 })
 
-export const StyledImageContainer = styled('div',{
-    width: '100%',
-    maxWidth: 130,
-    height: 145,
-    background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
-    borderRadius: 8,
-    padding: '0.25rem',
-    marginTop: '4rem',
 
+
+export const StyledImageContainer = styled('div',{
+    position: 'relative', 
+    display: 'flex',
+    overflow: 'hidden', 
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 500, 
+    height: 250, 
+    marginLeft: 'auto',
+    marginRight: 'auto',
+     
+})
+export const StyledImageContainerItem = styled('div',{ 
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    maxWidht: 150,
+    
+    // width: 'auto',
 
-    img:{
-        objectFit: 'cover'
-    }
+       
+    // overflow: 'hidden', 
+    // width: 500, 
+    // height: 250, 
+
+        span:{
+            
+            width: 140,
+            height: 140,
+            background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
+            borderRadius: '100%',
+            padding: '0.25rem',
+            
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+
+            boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+            position: 'absolute',
+
+            img:{
+                objectFit: 'cover'
+            }
+        }
 
 })

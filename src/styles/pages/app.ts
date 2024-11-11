@@ -1,5 +1,5 @@
 'use client'
-import {styled, keyframes} from '..' 
+import {styled, keyframes} from '../stitches.config' 
 import * as Dialog from '@radix-ui/react-dialog';
 
 export const StyledContainer = styled('div',{
@@ -46,6 +46,7 @@ export const slideIn = keyframes({
         inset: 0,
         backgroundColor: '$overlay',
     });
+
     export const StyledTitle = styled(Dialog.Title, {
         fontSize: '$lg',
         fontWeight: 'bold',
@@ -78,13 +79,15 @@ export const slideIn = keyframes({
         flexDirection: 'column',
         gap: '1.5rem',
         width: 384,
-        height: 528,
+        minHeight: 340,
+        overflowY: 'auto'
     })
 
     export const StyledModalFooter = styled('div',{
         display: 'flex',
         flexDirection: 'column',
         gap: 8,
+        marginTop: 5,
 
         div:{
             display: 'flex',
@@ -132,7 +135,7 @@ export const slideIn = keyframes({
 
     })
     
-  
+
     export const StyledCloseButton = styled(Dialog.Close, {
         background: 'none',
         border: 'none',
