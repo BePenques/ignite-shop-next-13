@@ -9,7 +9,20 @@ export const StyledProductContainer = styled('main',{
     alignItems: 'stretch',
     gap: '4rem',
     maxWidth: 1180,
-    margin: '0 auto'
+    margin: '0 auto',
+
+    '@sm': {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+        margin: 4
+    },
+    '@md': {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+        margin: 8
+    },
    
 
 })
@@ -27,7 +40,16 @@ export const StyledImageContainer = styled('div',{
 
     img:{
         objectFit: 'cover'
-    }
+    },
+    '@md': {
+        margin: '0 auto'
+      },
+    '@sm': {
+      
+        width: '100%',
+      
+    },
+  
 })
 
 export const StyledProductDetails = styled('div',{
@@ -90,5 +112,11 @@ export const StyledAddProductButton = styled('button',{
 
         '&:hover':{
             backgroundColor: '$green300',
-        }
+        },
+        '@sm': {
+          marginTop: 15
+        },
+        '@md': {
+          width: '100%'
+        },
 })

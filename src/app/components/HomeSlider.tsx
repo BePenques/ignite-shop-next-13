@@ -20,7 +20,18 @@ export default function HomeSlider({products}:HomeSliderProps) {
     slides: {
       perView: 2.5,
       spacing: 48
-    }
+    },
+    breakpoints: {
+      "(max-width: 1200px)": {
+        slides: { perView: 3, spacing: 10 },
+      },
+      "(max-width: 800px)": {
+        slides: { perView: 2, spacing: 10 },
+      },
+      "(max-width: 600px)": {
+        slides: { perView: 1, spacing: 5 },
+      },
+    },
   })
 
 return (    

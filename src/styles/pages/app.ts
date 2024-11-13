@@ -17,6 +17,13 @@ export const StyledHeader = styled('header',{
     maxWidth: 1180,
     margin: '0 auto',
 
+    '@sm': {
+        padding: '2rem',
+    },
+    '@md': {
+        padding: '2rem 1rem',
+    },
+
     button: {
         width: 48,
         height: 48,

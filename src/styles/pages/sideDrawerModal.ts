@@ -182,6 +182,14 @@ export const StyledModalFooter = styled('div',{
         '&[data-state="closed"]': {
         animation: `${slideOut} 0.3s ease-in-out`,
         },
+        '@sm': {  
+            width: '100%',
+           
+        },
+        '@md': {  
+            width: '100%',
+            
+        },
     });
 
     export const StyledProductList = styled('div',{

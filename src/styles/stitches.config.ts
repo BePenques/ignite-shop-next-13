@@ -27,7 +27,13 @@ export const {
             lg: '1.25rem',//20px
             xl: '1.5rem',//24px
             '2xl': '2rem'//32px
-        }
-    }
+        },
+      
+    },
+    media: {
+        sm: '(max-width: 640px)',
+        md: '(max-width: 768px)',
+        lg: '(max-width: 1024px)',
+      },
 })
 
