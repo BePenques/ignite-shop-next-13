@@ -1,6 +1,6 @@
 'use client'
 
-import { StyledCloseButton} from '@/styles/pages/app';
+import { StyledCloseButton} from '@/styles/pages/sideDrawerModal';
 import { X } from 'phosphor-react';
 
 

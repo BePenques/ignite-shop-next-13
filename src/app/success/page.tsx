@@ -56,22 +56,26 @@ export default async function Success({searchParams}: SuccessPageProps){
     
         <StyledSuccessContainer>
               <StyledImageContainer>
+                {/* <div> */}
                 {
                   sessionData?.products?.map((item, index)=>(
-                    <StyledImageContainerItem 
-                    key={item.name}
-                    css={{
-                      right: `${index * 95}px`, // Cada item deslocado em relação ao anterior
-                      transform: `translateX(${index * 70}px)`, // Leve sobreposição à esquerda
-                      zIndex: sessionData.products.length - index, // Garante que o último item fique acima dos anteriores
-                    }}
-                    >
-                      <span>
+                    // <StyledImageContainerItem 
+                    // key={item.name}
+                    // >
+                      <StyledImageContainerItem
+                        key={item.name}
+                        css={{
+                          marginLeft: index === 0 ? '0px' : '-60px', // Controla a sobreposição entre as imagens
+                          zIndex: 4 - index, // Mantém a última imagem sobre as anteriores
+                        
+                        }}
+                      >
                        <Image  src={item.imageUrl} width={120} height={110} alt=''/> 
-                      </span>
-                    </StyledImageContainerItem> 
+                      </StyledImageContainerItem>
+               
                   ))
                 }
+                {/* </div> */}
               </StyledImageContainer>
             
             <h1>Compra efetuada!</h1>

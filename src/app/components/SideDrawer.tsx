@@ -1,5 +1,5 @@
 // import * as Dialog from '@radix-ui/react-dialog';
-import { StyledOverlay, StyledContent, StyledProductList, StyledModalFooter, StyledTitle} from '@/styles/pages/app';
+import { StyledOverlay, StyledContent, StyledProductList, StyledModalFooter, StyledTitle} from '@/styles/pages/sideDrawerModal';
 import CloseButton from './CloseButton';
 import ProductCards from './ProductCards';
 import { ModalFooter } from './ModalFooter';

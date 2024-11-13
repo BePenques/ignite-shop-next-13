@@ -42,48 +42,49 @@ export const StyledSuccessContainer = styled('main',{
 
 
 export const StyledImageContainer = styled('div',{
-    position: 'relative', 
+    // position: 'relative', 
     display: 'flex',
-    overflow: 'hidden', 
+    // flexDirection: 'row',
+    // overflow: 'hidden', 
     alignItems: 'center',
     justifyContent: 'center',
     width: 500, 
     height: 250, 
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    // backgroundColor: 'red',
+
+    // div:{
+    //     display: 'flex',
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    // }
      
 })
+
+
+
 export const StyledImageContainerItem = styled('div',{ 
+    width: 140,
+    height: 140,
+    background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
+    borderRadius: '100%',
+    padding: '0.25rem',
+    
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    maxWidht: 150,
-    
-    // width: 'auto',
 
-       
-    // overflow: 'hidden', 
-    // width: 500, 
-    // height: 250, 
+    // boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
+  
 
-        span:{
-            
-            width: 140,
-            height: 140,
-            background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
-            borderRadius: '100%',
-            padding: '0.25rem',
-            
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-
-            boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-            position: 'absolute',
-
-            img:{
-                objectFit: 'cover'
-            }
-        }
+    img:{
+        objectFit: 'cover'
+    }
 
 })
+
+// export const StyledImageContainerSpan = styled('span',{
+
+    
+
+// })

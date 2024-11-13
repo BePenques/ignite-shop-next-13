@@ -3,9 +3,9 @@
 
 import axios from "axios";
 import useCartStore from "../context/cart";
-import {CartItem} from '../context/cart'
-import * as Dialog from '@radix-ui/react-dialog';
 import { useState } from "react";
+import { useRouter } from 'next/navigation';
+
 
 
 
@@ -14,6 +14,10 @@ export default function FinalizeOrderButton() {
     const { items, clearCart  } = useCartStore();
 
     const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
+
+    const router = useRouter();
+
+
 
     async function handleBuyProduct(){
 
@@ -44,9 +48,15 @@ export default function FinalizeOrderButton() {
        
         clearCart();
     }
-   
 
-return (    
-        <button onClick={handleBuyProduct}>Finalizar compra</button>
+    const redirectHome = () => {
+        router.push('/');
+      };
+   
+return (  
+        <>  
+            <a onClick={redirectHome}>Continuar comprando</a>
+            <button onClick={handleBuyProduct} disabled={isCreatingCheckoutSession}>Finalizar compra</button>
+        </>
     )
 }
