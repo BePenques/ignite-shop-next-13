@@ -1,5 +1,5 @@
 
-import { StyledImageContainer, StyledImageContainerItem, StyledSuccessContainer } from "@/styles/pages/success";
+import { StyledImageContainer, StyledImageContainerItem, StyledSuccessContainer, StyledQuantity } from "@/styles/pages/success";
 import Link from "next/link";
 import { stripe } from "@/lib/stripe";
 import Stripe from "stripe";
@@ -12,7 +12,8 @@ interface GetStripeProductProps {
     customerName: string | null | undefined,
     products:{
         name: string,
-        imageUrl: string
+        imageUrl: string,
+        quantity: number
     }[],
 }
 
@@ -33,6 +34,7 @@ interface SuccessPageProps {
           return {
             name: product.name,
             imageUrl: product.images[0] || '', 
+            quantity: item.quantity || 1
           };
       })|| [];
 
@@ -52,42 +54,47 @@ export default async function Success({searchParams}: SuccessPageProps){
 
     const sessionData = await getSessionData(sessionId);
 
+    const totalQuantity = sessionData?.products.reduce((acc, item) => {
+      return acc + item.quantity
+    }, 0);
+
     return (
     
         <StyledSuccessContainer>
               <StyledImageContainer>
-                {/* <div> */}
                 {
                   sessionData?.products?.map((item, index)=>(
-                    // <StyledImageContainerItem 
-                    // key={item.name}
-                    // >
+                 
                       <StyledImageContainerItem
                         key={item.name}
                         css={{
                           marginLeft: index === 0 ? '0px' : '-60px', // Controla a sobreposição entre as imagens
-                          zIndex: 4 - index, // Mantém a última imagem sobre as anteriores
-                        
+                          zIndex: 4 - index, // Mantém a última imagem sobre as anteriores                       
                         }}
                       >
                        <Image  src={item.imageUrl} width={120} height={110} alt=''/> 
+                       {
+                        totalQuantity > 1 && (
+                          <StyledQuantity>{item.quantity}</StyledQuantity>
+                        )
+                       }             
                       </StyledImageContainerItem>
                
                   ))
                 }
-                {/* </div> */}
               </StyledImageContainer>
-            
+           
             <h1>Compra efetuada!</h1>
             
             {
-                sessionData?.products?.length > 1 ? (
+              
+              totalQuantity > 1 ? (
               <p>
-                Uhuul <strong>{sessionData?.customerName}</strong>, sua compra de {sessionData?.products?.length} camisetas já está a caminho da sua casa. 
+                Uhuul <strong>{sessionData?.customerName}</strong>, sua compra de <strong>{totalQuantity}</strong> camisetas já está a caminho da sua casa. 
               </p>
                 ):(
               <p>
-                Uhuul <strong>{sessionData?.customerName}</strong>, sua compra já está a caminho da sua casa. 
+                Uhuul <strong>{sessionData?.customerName}</strong>, sua compra de <strong>{sessionData?.products[0]?.name}</strong> já está a caminho da sua casa. 
               </p>
                 )
             }

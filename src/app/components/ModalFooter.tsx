@@ -12,20 +12,24 @@ export function  ModalFooter() {
   
     const total = items.reduce((acc, item) => {
         const price = item.price ? parseFloat(item.price.replace("R$", "").trim().replace(",", ".")) : 0;
-        return acc + price;
+        return acc + (price * item.quantity);
       }, 0);
 
       const totalFormatted = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL"
       }).format(total);
+
+      const totalQuantity = items.reduce((acc, item) => {
+        return acc + item.quantity
+      }, 0);
     
 
   return (
     <>
     <div>
         <p>Quantidade</p>
-        <p>{items.length} itens</p>
+        <p>{totalQuantity} itens</p>
     </div>
     <div>
         <p>Valor total</p>

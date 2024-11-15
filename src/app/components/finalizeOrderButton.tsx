@@ -24,7 +24,7 @@ export default function FinalizeOrderButton() {
         const formattedProducts = items.map((product) => {
             return  {
                 price: product.defaultPriceId,
-                quantity: 1
+                quantity: product.quantity
             }
         });
 
@@ -40,13 +40,15 @@ export default function FinalizeOrderButton() {
 
             window.location.href = checkoutUrl;
 
+            clearCart();
+
         }catch(err){
             setIsCreatingCheckoutSession(false)
             //conectar com ferramenta de observabilidade(Datadog/sentry)
             alert('Falha ao redirecionar ao checkout')
         }
        
-        clearCart();
+       
     }
 
     const redirectHome = () => {

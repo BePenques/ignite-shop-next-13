@@ -26,23 +26,33 @@ export const StyledProductCard = styled('div',{
     width: '100%',
     height: 94,
 
-    div:{
+   
+
+})
+
+export const StyledProductCardInfos = styled('div',{
+
+  
+    display: 'flex',
+    justifyContent: 'space-between',
+
+    section:{
         display: 'flex',
         flexDirection: 'column',
+    },
 
-        p:{
-            fontsize: '$md',
-            marginBottom: 2
-        },
-        strong:{
-            marginBottom: 12
-        },
-        a: {
-            color: '$green500',
-            cursor: 'pointer',
-            '&:hover': {
-                textDecoration: 'underline'
-            }
+    p:{
+        fontsize: '$md',
+        marginBottom: 2
+    },
+    strong:{
+        marginBottom: 12
+    },
+    a: {
+        color: '$green500',
+        cursor: 'pointer',
+        '&:hover': {
+            textDecoration: 'underline'
         }
     }
 
@@ -140,73 +150,97 @@ export const StyledModalFooter = styled('div',{
     }
 
 })
-    export const slideIn = keyframes({
+export const slideIn = keyframes({
     '0%': { transform: 'translateX(100%)' },
     '100%': { transform: 'translateX(0)' },
-    });
+});
 
-    export const slideOut = keyframes({
+export const slideOut = keyframes({
     '0%': { transform: 'translateX(0)' },
     '100%': { transform: 'translateX(100%)' },
-    });
+});
+    
+
+export const StyledOverlay = styled(Dialog.Overlay, {
+    position: 'fixed',
+    inset: 0,
+    backgroundColor: '$overlay',
+});
+
+export const StyledTitle = styled(Dialog.Title, {
+    fontSize: '$lg',
+    fontWeight: 'bold',
+    marginBottom: '2rem'
+})
+
+export const StyledContent = styled(Dialog.Content, {
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    width: '$modalWidth',
+    backgroundColor: '$gray800',
+    padding: 48,
+    boxShadow: '-2px 0 10px $shadow',
+    display: 'flex',
+    flexDirection: 'column',
+
+    // Animações ao abrir e fechar o modal
+    '&[data-state="open"]': {
+    animation: `${slideIn} 0.3s ease-in-out`,
+    },
+    '&[data-state="closed"]': {
+    animation: `${slideOut} 0.3s ease-in-out`,
+    },
+    '@sm': {  
+        width: '100%',
         
+    },
+    '@md': {  
+        width: '100%',
+        
+    },
+});
 
-    export const StyledOverlay = styled(Dialog.Overlay, {
-        position: 'fixed',
-        inset: 0,
-        backgroundColor: '$overlay',
-    });
+export const StyledProductList = styled('div',{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1.5rem',
+    width: 384,
+    minHeight: 320,
+    overflowY: 'auto'
+})
 
-    export const StyledTitle = styled(Dialog.Title, {
-        fontSize: '$lg',
-        fontWeight: 'bold',
-        marginBottom: '2rem'
-    })
 
-    export const StyledContent = styled(Dialog.Content, {
-        position: 'fixed',
-        top: 0,
-        right: 0,
-        bottom: 0,
-        width: '$modalWidth',
-        backgroundColor: '$gray800',
-        padding: 48,
-        boxShadow: '-2px 0 10px $shadow',
+export const StyledCloseButton = styled(Dialog.Close, {
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    alignSelf: 'flex-end',
+})
+
+export const StyledQuantityNumber = styled('div',{
+    display: 'flex',
+    div:{
         display: 'flex',
-        flexDirection: 'column',
+    },
+    a: {
+     marginLeft: 30
+    },
 
-        // Animações ao abrir e fechar o modal
-        '&[data-state="open"]': {
-        animation: `${slideIn} 0.3s ease-in-out`,
-        },
-        '&[data-state="closed"]': {
-        animation: `${slideOut} 0.3s ease-in-out`,
-        },
-        '@sm': {  
-            width: '100%',
-           
-        },
-        '@md': {  
-            width: '100%',
-            
-        },
-    });
-
-    export const StyledProductList = styled('div',{
+    button:{
         display: 'flex',
-        flexDirection: 'column',
-        gap: '1.5rem',
-        width: 384,
-        minHeight: 320,
-        overflowY: 'auto'
-    })
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '$green300',
+        width: 18,
+        height: 18,
+        border: 0,
+        borderRadius: '50%',
+        cursor: 'pointer'
+    },
+    span:{
+        margin: '0 10px'
+    }
 
-
-
-
-    export const StyledCloseButton = styled(Dialog.Close, {
-        background: 'none',
-        border: 'none',
-        cursor: 'pointer',
-        alignSelf: 'flex-end',
-    });
+})

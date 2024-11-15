@@ -50,19 +50,13 @@ export const StyledImageContainer = styled('div',{
     justifyContent: 'center',
     width: 500, 
     height: 250, 
-    // backgroundColor: 'red',
-
-    // div:{
-    //     display: 'flex',
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    // }
      
 })
 
 
 
 export const StyledImageContainerItem = styled('div',{ 
+    position: 'relative',
     width: 140,
     height: 140,
     background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
@@ -73,7 +67,6 @@ export const StyledImageContainerItem = styled('div',{
     alignItems: 'center',
     justifyContent: 'center',
 
-    // boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
     boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
   
 
@@ -83,8 +76,26 @@ export const StyledImageContainerItem = styled('div',{
 
 })
 
-// export const StyledImageContainerSpan = styled('span',{
+export const StyledQuantity = styled('span',{
 
+  
+        backgroundColor: '$green500',
+        border: '1px solid black',
+        position: 'absolute',
+        top: 10,
+        right: 30,
+        transform: 'translate(50%, -50%)',
+        color: 'white',
+        borderRadius: '50%',
+        padding: '4px 8px',
+        fontSize: '12px',
+        fontWeight: 'bold',
+        width: '24px',
+        height: '24px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)',
     
 
-// })
+})
