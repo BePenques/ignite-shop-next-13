@@ -42,7 +42,8 @@ async function getProductData(productId: string): Promise<CartItem> {
       currency: 'BRL',
     }).format(price.unit_amount/100) : null,
     description: product.description,
-    defaultPriceId: price.id
+    defaultPriceId: price.id,
+    quantity: 1
   };
 }
 
