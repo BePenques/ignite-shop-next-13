@@ -52,7 +52,7 @@ const useCartStore = create<CartState>()(
         })),
     }),
     {
-      name: 'cart-storage', // Nome do armazenamento no localStorage
+      name: 'cart-storage',
     }
   )
   );

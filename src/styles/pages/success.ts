@@ -8,14 +8,17 @@ export const StyledSuccessContainer = styled('main',{
     alignItems: 'center',
     justifyContent: 'center',
     alignContent: 'center',
-    // margin: '0 auto',
     height: 656,
     width: '100%',
 
     h1:{
         fontSize: '$2xl',
         color: '$gray100',
-        marginTop: 48
+        marginTop: 48,
+        '@sm': {
+            fontSize: '$xl', 
+            marginTop: '2rem',
+        },
     },
     p:{
         fontSize: '$xl',
@@ -23,7 +26,12 @@ export const StyledSuccessContainer = styled('main',{
         maxWidth: 560,
         textAlign: 'center',
         marginTop: '2rem',
-        lineHeight: 1.4
+        lineHeight: 1.4,
+        '@sm': {
+            fontSize: '$md', 
+            maxWidth: '100%',
+            margin: 8
+        },
     },
     a: {
         display: 'block',
@@ -42,14 +50,20 @@ export const StyledSuccessContainer = styled('main',{
 
 
 export const StyledImageContainer = styled('div',{
-    // position: 'relative', 
     display: 'flex',
-    // flexDirection: 'row',
-    // overflow: 'hidden', 
+ 
     alignItems: 'center',
     justifyContent: 'center',
-    width: 500, 
-    height: 250, 
+    gap: '1rem',
+    width: '100%',
+    maxWidth: 500, 
+    height: 'auto', 
+
+    '@sm': {
+        maxWidth: '100%', 
+        padding: 4,
+       
+    },
      
 })
 
@@ -70,9 +84,15 @@ export const StyledImageContainerItem = styled('div',{
     boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
   
 
-    img:{
-        objectFit: 'cover'
-    }
+    img: {
+        objectFit: 'cover',
+        width: '100%',
+        height: '100%',
+    },
+    '@sm': {
+        width: '100px', 
+        height: '100px',
+    },
 
 })
 
@@ -96,6 +116,15 @@ export const StyledQuantity = styled('span',{
         alignItems: 'center',
         justifyContent: 'center',
         boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)',
+
+        '@sm': {
+            fontSize: '10px', 
+            width: '20px',
+            height: '20px',
+            padding: '3px 6px',
+            top: 10,
+            right: 25,
+        },
     
 
 })

@@ -74,7 +74,7 @@ export default async function Success({searchParams}: SuccessPageProps){
                       >
                        <Image  src={item.imageUrl} width={120} height={110} alt=''/> 
                        {
-                        totalQuantity > 1 && (
+                        item.quantity > 1 && (
                           <StyledQuantity>{item.quantity}</StyledQuantity>
                         )
                        }             

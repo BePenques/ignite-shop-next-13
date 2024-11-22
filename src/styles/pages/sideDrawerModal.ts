@@ -17,22 +17,23 @@ export const StyledImageContainerCart = styled('div',{
 
     img:{
         objectFit: 'cover'
-    }
+    },
+    '@sm': {
+        maxWidth: 80, 
+        height: 72,
+    },
 })
 
 
 export const StyledProductCard = styled('div',{
     display: 'flex',
     width: '100%',
-    height: 94,
-
-   
+    height: 94,  
 
 })
 
 export const StyledProductCardInfos = styled('div',{
 
-  
     display: 'flex',
     justifyContent: 'space-between',
 
@@ -93,7 +94,9 @@ export const StyledModalFooter = styled('div',{
     display: 'flex',
     flexDirection: 'column',
     gap: 8,
-    marginTop: 20,
+    padding: '1rem 0', 
+    borderTop: '1px solid $green300', 
+
 
     div:{
         display: 'flex',
@@ -116,19 +119,15 @@ export const StyledModalFooter = styled('div',{
             fontWeight: 'bold'
         }
       },
-  
 
     button:{
-        
-        backgroundColor: '$green500',
-        border: 0,
-        color: '$white',
-        borderRadius: 8,
-        padding: '1.15rem',
-        cursor: 'pointer',
-        fontWeight: 'bold',
+        padding: '1rem', 
         fontSize: '$md',
-        marginBottom: 4,
+        backgroundColor: '$green500',
+        color: '$white',
+        border: 'none',
+        borderRadius: 8,
+        cursor: 'pointer',
 
         '&:disabled':{
             opacity: 0.6,
@@ -178,12 +177,17 @@ export const StyledContent = styled(Dialog.Content, {
     top: 0,
     right: 0,
     bottom: 0,
-    width: '$modalWidth',
+    width: '30%',
+    maxWidth: 480,
     backgroundColor: '$gray800',
-    padding: 48,
+    padding: 30,
     boxShadow: '-2px 0 10px $shadow',
-    display: 'flex',
-    flexDirection: 'column',
+
+    display: 'flex', 
+    flexDirection: 'column', 
+    justifyContent: 'space-between', 
+    gap: '1rem', 
+
 
     // Animações ao abrir e fechar o modal
     '&[data-state="open"]': {
@@ -192,23 +196,53 @@ export const StyledContent = styled(Dialog.Content, {
     '&[data-state="closed"]': {
     animation: `${slideOut} 0.3s ease-in-out`,
     },
-    '@sm': {  
-        width: '100%',
-        
+    
+    '@md': {
+        width: '50%', 
+        padding: 32,
     },
-    '@md': {  
+    '@sm': {
         width: '100%',
-        
+        padding: 24,
     },
 });
 
 export const StyledProductList = styled('div',{
+  
     display: 'flex',
     flexDirection: 'column',
     gap: '1.5rem',
-    width: 384,
-    minHeight: 320,
-    overflowY: 'auto'
+    flex: 1,
+    overflowY: 'auto', 
+    padding: '0 16px',
+
+      /* Para navegadores que suportam scrollbar-color */
+      scrollbarColor: '$green500 $gray700', // thumb | track
+      scrollbarWidth: 'thin', // Fina em navegadores que suportam nativamente
+  
+      /* Estilização para WebKit */
+      '&::-webkit-scrollbar': {
+          width: '8px',
+      },
+      '&::-webkit-scrollbar-track': {
+          backgroundColor: '$gray700',
+      },
+      '&::-webkit-scrollbar-thumb': {
+          transition: 'background-color 0.3s ease',
+          backgroundColor: '$green500',
+          borderRadius: '4px',
+      },
+      '&::-webkit-scrollbar-thumb:hover': {
+          backgroundColor: '$green300',
+      },    
+
+    '@sm': {
+        maxWidth: '100%',
+        '&::-webkit-scrollbar': {
+            width: '6px', 
+        },
+       
+    },
 })
 
 
@@ -217,6 +251,10 @@ export const StyledCloseButton = styled(Dialog.Close, {
     border: 'none',
     cursor: 'pointer',
     alignSelf: 'flex-end',
+    '@sm': {
+        fontSize: '1rem', 
+        marginTop: 4,
+    },
 })
 
 export const StyledQuantityNumber = styled('div',{

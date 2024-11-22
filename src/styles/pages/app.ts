@@ -31,6 +31,9 @@ export const StyledHeader = styled('header',{
         border: 0,
         cursor: 'pointer',
         borderRadius: 6,
+    },
+    a: {
+        cursor: 'pointer'
     }
 })
 

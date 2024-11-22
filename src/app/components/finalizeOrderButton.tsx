@@ -7,19 +7,15 @@ import { useState } from "react";
 import { useRouter } from 'next/navigation';
 
 
-
-
 export default function FinalizeOrderButton() {
 
-    const { items, clearCart  } = useCartStore();
+    const { items, clearCart  } = useCartStore();  
 
     const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
 
     const router = useRouter();
 
-
-
-    async function handleBuyProduct(){
+    async function handleBuyProduct(){  
 
         const formattedProducts = items.map((product) => {
             return  {
@@ -40,7 +36,7 @@ export default function FinalizeOrderButton() {
 
             window.location.href = checkoutUrl;
 
-            clearCart();
+           
 
         }catch(err){
             setIsCreatingCheckoutSession(false)
@@ -48,7 +44,7 @@ export default function FinalizeOrderButton() {
             alert('Falha ao redirecionar ao checkout')
         }
        
-       
+        clearCart();
     }
 
     const redirectHome = () => {
