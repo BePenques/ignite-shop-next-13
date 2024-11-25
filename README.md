@@ -11,6 +11,7 @@ Desafio proposto: Adicionar um botão no header, que quando clicado abrisse um m
 
 Layout Figma: https://www.figma.com/file/Rc7IplKktlQQr3TwUQagEo/Ignite-Shop-2.0-(Community)
 
+Deploy: https://ignite-shop-next-13.vercel.app
 
 ### Para rodar:
 git clone
